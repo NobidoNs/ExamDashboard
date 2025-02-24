@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input[type='number'] {
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', Arial, sans-serif;
+	background: linear-gradient(135deg, #f0f2f5 0%, #e0e7ff 100%);
+}
+
+.profile-icon {
+	position: fixed;
+	top: 30px;
+	right: 30px;
+	transition: transform 0.3s ease;
+}
+
+.profile-icon:hover {
+	transform: scale(1.1);
+}
+
+.profile-icon img {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	cursor: pointer;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+	border: 2px solid #fff;
+}
+
+h1 {
+	text-align: center;
+	color: #2d3748;
+	margin-bottom: 30px;
+	font-size: 2.5rem;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard-table {
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.9);
+	border-radius: 15px;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+	border-collapse: collapse;
+	overflow: hidden;
+	transition: transform 0.3s ease;
+}
+
+.leaderboard-table:hover {
+	transform: translateY(-5px);
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+	padding: 15px;
+	text-align: left;
+	border-bottom: 1px solid #e2e8f0;
+}
+
+.leaderboard-table th {
+	background: linear-gradient(90deg, #4a90e2 0%, #357abd 100%);
+	color: white;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.leaderboard-table tr:hover {
+	background-color: #f8fafc;
+	transition: background-color 0.3s ease;
+}
+
+.leaderboard-table tr:last-child td {
+	border-bottom: none;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Option 1: Elegant Gradient Mesh */
+body {
+	background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+/* Option 2: Aurora Borealis */
+body {
+	background: linear-gradient(45deg, #1a2a6c, #b21f1f, #fdbb2d);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/* Option 3: Modern Glass Morphism */
+body {
+	background: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.1),
+		rgba(255, 255, 255, 0)
+	);
+	backdrop-filter: blur(10px);
+	background-color: #8ec5fc;
+	background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+}
