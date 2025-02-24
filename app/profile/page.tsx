@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { ProfileSkeleton, ActivitiesSkeleton } from '@/app/ui/skeletons'
 import { signOut } from 'next-auth/react'
+import AchievementsInfo from '@/app/ui/achievements-info'
 
 // todo limits
 
@@ -24,6 +25,7 @@ export default function ProfilePage() {
 	const [totalPages, setTotalPages] = useState(1)
 	const [isLoadingProfile, setIsLoadingProfile] = useState(true)
 	const [isLoadingActivities, setIsLoadingActivities] = useState(true)
+	const [showAchievementsInfo, setShowAchievementsInfo] = useState(false)
 
 	const fetchMe = async (url: string) => {
 		setIsLoadingProfile(true)
@@ -266,20 +268,31 @@ export default function ProfilePage() {
 									</div>
 								</div>
 							</div>
-							<div className='mt-4 max-w-full'>
+							<div className='max-w-full'>
+                <div className='flex pt-6 pb-2 justify-center'>
+                  <button 
+                    onClick={() => setShowAchievementsInfo(true)}
+                    className="flex items-center px-4 gap-4 text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50 rounded-lg transition-all duration-300"
+                  >
+                    <p className='text-l font-semibold text-indigo-700'> Выставление баллов</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
 								<form onSubmit={handleSubmit}>
 									<div className='flex flex-row gap-3 max-w-full'>
 									<input
 										type='text'
 										className='flex-1 p-3 rounded-lg border border-purple-200 min-w-0'
-										placeholder='Enter Task'
+										placeholder='Введите задачу'
 										value={inputText}
 										onChange={e => setInputText(e.target.value)}
 									/>
 									<input
 										type='number'
 										className='p-3 rounded-lg border border-purple-200 w-20'
-										placeholder='Points'
+										placeholder='Балл'
 										value={inputValue}
 										onChange={e => {
 										const points = parseInt(e.target.value)
@@ -373,6 +386,10 @@ export default function ProfilePage() {
 					)}
 				</div>
 			</div>
+      <AchievementsInfo 
+        isOpen={showAchievementsInfo} 
+        onClose={() => setShowAchievementsInfo(false)}
+      />
 		</main>
 	)
 }
