@@ -24,19 +24,19 @@ export default function AchievementsInfo({ isOpen, onClose }: AchievementsInfoPr
             <p className="font-medium text-blue-700 text-center">Вы сами оцениваете свой результат, можете выставлять баллы на глаз</p>
           </div>
           <div className="p-3 bg-purple-50 rounded-lg">
-            <p className="font-medium text-violet-700">Простые задачи (1/4 балла)</p>
+            <p className="font-medium text-violet-700">Простые задачи (1 балл)</p>
             <p className="text-sm text-gray-600">Задачи которые решаются быстро (например проф математика 1-8 номера)</p>
           </div>
           <div className="p-3 bg-indigo-50 rounded-lg">
-            <p className="font-medium text-indigo-700">Нормальные задачи (1/2 балла)</p>
+            <p className="font-medium text-indigo-700">Нормальные задачи (2 балла)</p>
             <p className="text-sm text-gray-600">Задачи которые решаются, но долго (например проф математика 9-12 номера)</p>
           </div>
           <div className="p-3 bg-lime-50 rounded-lg">
-            <p className="font-medium text-yellow-700">Множественный выбор (1 балл)</p>
+            <p className="font-medium text-yellow-700">Множественный выбор (4 баллa)</p>
             <p className="text-sm text-gray-600">Только если трудно </p>
           </div>
           <div className="p-3 bg-pink-50 rounded-lg">
-            <p className="font-medium text-pink-700">Вторая часть (1 - 4 балла)</p>
+            <p className="font-medium text-pink-700">Вторая часть (4 - 16 баллов)</p>
             <p className="text-sm text-gray-600">Сколько в ЕГЭ дают, столько и писать</p>
           </div>
           
