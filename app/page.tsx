@@ -81,7 +81,7 @@ export default function Page() {
 						>
 							<span className='hidden md:block'>{player.name}</span>
 							<span className='md:hidden'>{player.name.split(' ')[0]}</span>
-							<div className='w-full h-auto rounded-full overflow-hidden'>
+							<div className='w-8 h-auto rounded-full overflow-hidden'>
 								<Image
 									src={player.image || '/icon.png'}
 									width={32}
