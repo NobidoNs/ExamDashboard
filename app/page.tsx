@@ -81,7 +81,7 @@ export default function Page() {
 						>
 							<span className='hidden md:block'>{player.name}</span>
 							<span className='md:hidden'>{player.name.split(' ')[0]}</span>
-							<div className='w-8 h-8 rounded-full overflow-hidden'>
+							<div className='w-full h-auto rounded-full overflow-hidden'>
 								<Image
 									src={player.image || '/icon.png'}
 									width={32}
@@ -104,13 +104,13 @@ export default function Page() {
 		<main className='flex min-h-screen flex-col p-4'>
 			<div className='flex justify-center md:justify-end md:absolute md:top-8 md:right-8 z-10'>
 				<Link href='/profile'>
-					<div className='w-24 h-24 rounded-full overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-white transform md:hover:scale-110'>
+					<div className='w-24 h-24 '>
 						<Image
 							src={image}
 							width={800}
 							height={800}
 							alt='profile-icon'
-							className='object-cover'
+							className='w-full h-auto object-cover rounded-full overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-white transform md:hover:scale-110'
 						/>
 					</div>
 				</Link>

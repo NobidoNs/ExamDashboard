@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { ProfileSkeleton, ActivitiesSkeleton } from '@/app/ui/skeletons'
 import { signOut } from 'next-auth/react'
 import AchievementsInfo from '@/app/profile/achievements-info'
+import { ChangeEvent } from 'react'
 
 // todo limits
 
@@ -46,6 +47,24 @@ export default function ProfilePage() {
 		setTotalPages(data.totalPages)
 		setIsLoadingActivities(false)
 	}
+
+	const handleImageUpload = async (e: ChangeEvent<HTMLInputElement>) => {
+		const file = e.target.files?.[0]
+		if (!file) return
+	  
+		const formData = new FormData()
+		formData.append('image', file)
+	  
+		const response = await fetch('/api/upload-image', {
+		  method: 'POST',
+		  body: formData
+		})
+	  
+		if (response.ok) {
+		  // Refresh user data to show new image
+		  fetchMe('/api/me')
+		}
+	  }
 
 	useEffect(() => {
 		const getSession = async () => {
@@ -211,15 +230,28 @@ export default function ProfilePage() {
 					) : (
 						<>
 							<div className='flex flex-col md:flex-row gap-6 md:items-center justify-center'>
-								<div className='flex-shrink-0 w-32 sm:w-40 md:w-[150px] mx-auto md:mx-0'>
-									<Image
-									src={image}
-									width={150}
-									height={150}
-									className='w-full h-auto rounded-full ring-4 ring-purple-200 shadow-lg'
-									alt='Profile picture'
-									/>
-								</div>
+                <div className='relative flex-shrink-0 w-32 sm:w-40 md:w-[150px] mx-auto md:mx-0 group'>
+                  <Image
+                    src={image}
+                    width={150}
+                    height={150}
+                    className='w-full h-auto rounded-full ring-4 ring-purple-200 shadow-lg'
+                    alt='Profile picture'
+                  />
+                  <label className='absolute inset-0 flex items-center justify-center bg-black/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer'>
+                    <input 
+                      type="file" 
+                      className='hidden'
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                    />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-8 h-8">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
+                    </svg>
+                  </label>
+                </div>
+
 
 								<div className='flex-grow min-w-0'>
 									<h1
@@ -269,17 +301,17 @@ export default function ProfilePage() {
 								</div>
 							</div>
 							<div className='max-w-full'>
-                <div className='flex pt-6 pb-2 justify-center'>
-                  <button 
-                    onClick={() => setShowAchievementsInfo(true)}
-                    className="flex items-center px-4 gap-4 text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50 rounded-lg transition-all duration-300"
-                  >
-                    <p className='text-l font-semibold text-indigo-700'> Выставление баллов</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                    </svg>
-                  </button>
-                </div>
+								<div className='flex pt-6 pb-2 justify-center'>
+								<button 
+									onClick={() => setShowAchievementsInfo(true)}
+									className="flex items-center px-4 gap-4 text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50 rounded-lg transition-all duration-300"
+								>
+									<p className='text-l font-semibold text-indigo-700'> Выставление баллов</p>
+									<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+									<path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+									</svg>
+								</button>
+								</div>
 								<form onSubmit={handleSubmit}>
 									<div className='flex flex-row gap-3 max-w-full'>
 									<input
