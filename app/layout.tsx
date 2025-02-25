@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 		default: 'Contention',
 	},
 	description: 'Соревновательная подготовка к экзаменам',
-	metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
+	metadataBase: new URL('https://contention-nobidon.vercel.app'),
 }
 export default function RootLayout({
 	children,
