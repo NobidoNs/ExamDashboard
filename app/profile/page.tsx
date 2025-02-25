@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { ProfileSkeleton, ActivitiesSkeleton } from '@/app/ui/skeletons'
 import { signOut } from 'next-auth/react'
-import AchievementsInfo from '@/app/ui/achievements-info'
+import AchievementsInfo from '@/app/profile/achievements-info'
 
 // todo limits
 
