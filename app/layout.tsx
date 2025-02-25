@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 		template: '%s | Contention',
 		default: 'Contention',
 	},
-	description: 'The official Next.js Learn Dashboard built with App Router.',
+	description: 'Соревновательная подготовка к экзаменам',
 	metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
 }
 export default function RootLayout({
