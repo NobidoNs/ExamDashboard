@@ -1,1 +1,1 @@
-## Next.js App Alternative
+## Myhome project to exam preparation
