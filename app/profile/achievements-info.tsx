@@ -37,7 +37,7 @@ export default function AchievementsInfo({ isOpen, onClose }: AchievementsInfoPr
           </div>
           <div className="p-3 bg-pink-50 rounded-lg">
             <p className="font-medium text-pink-700">Вторая часть (4 - 16 баллов)</p>
-            <p className="text-sm text-gray-600">Сколько в ЕГЭ дают, столько и писать</p>
+            <p className="text-sm text-gray-600">От сложности и затрат времяни</p>
           </div>
           
         </div>
